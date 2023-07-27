@@ -1,0 +1,25 @@
+html, 
+body{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    max-height: 100%;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    width: min(100vw, 100vh);
+    height: min(100vw, 100vh);
+    max-width: 100%; /* Ensure the container does not exceed the screen width */
+    max-height: 100%;
+}
+
+.pixel{
+    border:  1px solid black;
+    width: calc(100% / 16);
+    height: calc(100% / 16);
+}
