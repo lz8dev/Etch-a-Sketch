@@ -14,10 +14,10 @@ body{
     padding: 0;
 }
 
-.container{
+#grid{
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(var(--gridRes), 1fr);
+    grid-template-rows: repeat(var(--gridRes), 1fr);
     flex-wrap: wrap;
     width: var(--grid-size);
     height: var(--grid-size);
@@ -31,6 +31,6 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
-.hovered{
-    background-color: #dadada;
+div{
+    border: 1px dashed black;
 }
