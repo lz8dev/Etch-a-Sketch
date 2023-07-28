@@ -12,23 +12,29 @@
 <body>
     <div class="section">
         <div class="division" id="buttons">
-            <button id="pen"> - PEN - </button>
-            <button id="eraser"> - ERASER - </button>
-            <button id="shading"> - SHADE - </button>
-            <button id="rainbow"> - RAINBOW - </button>
+            <button class="penMode" id="pen"> - PEN - </button>
+            <button class="penMode" id="eraser"> - ERASER - </button>
+            <button class="penMode" id="shade"> - SHADE - </button>
+            <button class="penMode" id="rainbow"> - RAINBOW - </button>
         </div>
         <div class="division" id="grid"></div>
     </div>
     <div class="section">
         <div class="division" id="colors">
-            <div id="penColor"> - PEN COLOR - </div>
-            <div id="bkColor"> - BACKGROUND COLOR - </div>
+            <div class="colorMod" id="penColor"> 
+                <label for="penPick">PEN COLOR:</label>
+                <input type="color" id="penPick" name="penPick">
+            </div>
+
+            <div class="colorMod"id="bkColor"> - BACKGROUND COLOR - </div>
+            <button id="classic"> - CLASSIC MODE - </button>
         </div>
+
         <div class="division" id="properties">
             <div id="gridSize"> - GRID SIZE - </div>
-            <div id="gridLines"> - GRID LINES - </div>
-            <div id="random"> - FILL RANDOM - </div> 
-            <div id="clear"> - CLEAR - </div>
+            <button class="gridMode" id="gridLines"> - GRID LINES - </button>
+            <button class="gridMode" id="random"> - FILL RANDOM - </button> 
+            <button id="clear"> - CLEAR - </button>
             
         </div>
     </div>    
