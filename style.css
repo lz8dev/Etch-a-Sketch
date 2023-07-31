@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
+
 :root{
     --grid-size: min(70vw, 70vh);
 }
@@ -13,70 +15,78 @@ body{
     color: white;
     max-width: calc(1.7 * var(--grid-size));
     height: 100vh;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
     max-height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Chakra Petch', sans-serif;
     
     border: 4px solid red;
 }
 
-.section,
-.division{
+
+.division,
+.section{
     display: flex;    
     box-sizing: border-box;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
+.section{
+    flex-direction: column;
+}
+
 button{
+    box-sizing: border-box;
     background-color: rgb(187 205 187);
     padding: 1vmin;
     margin: 1vmin;
     font-size: 1.5vmin;
+    overflow: hidden;
 }
 
 .penMode{
-    width: 100%;
-    max-width: 100px;
-}
-
-#colors,
-#buttons{
-    width: calc(100% - var(--grid-size));
-    margin-left: 3vmin;
-    padding: 1vmin;
-    flex-wrap: wrap;
-    
-    border: 3px dashed #dea7bb;
+    width: 40%;
 }
 
 #colors{
-    justify-content: space-evenly;
+    padding: 1vmin;
+    flex-wrap: wrap;
+
+    border: 3px dashed #dea7bb;
+}
+
+#buttons{
+    flex-wrap: wrap;
 }
 
 .colorMod{
     display: flex;
+    box-sizing:border-box;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     gap: 1vmin;
     padding: 1vmin;
     border: 2px solid cyan;
     width: 40%;
+    height: 15vmin;
+    
 }
 
 input[type="color"] {
-    /* Set width and height */
     width: 10vmin;
-    height: 10vmin;
-    /* Change border radius to make it round */
-    border-radius: 200px; 
+    height: 6vmin; 
 }
 
 #penPick{
     border-radius: 0px; 
+}
+
+label{
+    text-align: center;
+    font-size: 2.2vmin;
+    
 }
 
 #properties,
@@ -90,6 +100,7 @@ input[type="color"] {
 #properties{
     flex-wrap: wrap;
     padding: 3vmin;
+    align-self: flex-end;
 }
 
 #gridSize{
@@ -102,7 +113,8 @@ input[type="color"] {
     width: 40%;
 }
 
-#clear{
+#clear,
+#classic{
     width: 84%;
 }
 
@@ -133,5 +145,27 @@ button:hover{
     border:  .1px dotted rgb(204 204 204);
     background-color: rgb(230, 230, 230);
 }
+
+
+#sizeSlider {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    border: 2px solid yellow;
+}
+
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none; /* Remove default styles for WebKit browsers */
+  appearance: none; /* Remove default styles for other browsers */
+  height: 1vmin;
+  background: #d3d3d3;
+  border-radius: 5px;
+}
+
+
+
+
 
 

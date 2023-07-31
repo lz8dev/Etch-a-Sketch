@@ -1,3 +1,5 @@
+/*Original createGrid function:
+
 function createGrid(size){
     let grid = document.getElementById('grid');
     grid.innerHTML = '';
@@ -9,7 +11,50 @@ function createGrid(size){
     };
     startDraw()
 };
+*/
 
+let size = document.getElementById("sizeSlider"),
+    sizeValue = document.getElementById("sizeValue"), 
+    rendering = false;
+
+size.addEventListener("input", function () {
+    if(!rendering){
+        let value = size.value;
+        sizeValue.textContent = `${value} x ${value} px`;
+        size.disabled = false;
+        createGrid(value);
+    }
+});
+
+//Modified createGrid function to obtain the batch rendering effect
+function createGrid(size) {
+    let grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    document.documentElement.style.setProperty('--gridRes', size);
+    const batchSize = 100; // Adjust the batch size as needed
+    let count = 0;
+    rendering = true;
+
+    function renderBatch() {
+        for (let i = 0; i < batchSize && count < size * size; i++) {
+        let pixel = document.createElement('div');
+        pixel.classList.add('pixel');
+        grid.appendChild(pixel);
+        count++;
+        };
+        if (count < size * size) {
+            requestAnimationFrame(renderBatch);
+        } else {
+            startDraw();
+            size.disabled = false;
+            rendering = false;
+        };
+    };
+    renderBatch();
+};
+
+
+  
 function startDraw(){
     let pixels = document.getElementsByClassName('pixel'),
         isDrawing = false;
@@ -49,25 +94,17 @@ function clearGrid(){
 }
 
 let penPick = document.getElementById('penPick'),
-    penColor = document.getElementById('penColor');
+    bkPick = document.getElementById('bkPick');
 
-    penPick .addEventListener('input', function(event){
-        let pickedColor = event.target.value;
-        penColor.style.backgroundColor = pickedColor;
+penPick .addEventListener('input', function(event){
+    let pickedColor = event.target.value;
 });
 
-/*
-    <label for="colorPicker">Choose a color:</label>
-    <input type="color" id="colorPicker" name="colorPicker">
-    <div id="colorPreview" style="width: 100px; height: 100px; margin-top: 20px;"></div>
+bkPick .addEventListener('input', function(event){
+    let pickedColor = event.target.value;
+});
 
-    <script>
-        const colorPicker = document.getElementById('colorPicker');
-        const colorPreview = document.getElementById('colorPreview');
 
-        colorPicker.addEventListener('input', (event) => {
-            const selectedColor = event.target.value;
-            colorPreview.style.backgroundColor = selectedColor;
-        });
-    </script>
-    */
+
+
+
