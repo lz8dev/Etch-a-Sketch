@@ -13,15 +13,17 @@ function createGrid(size){
 };
 */
 
-let size = document.getElementById("sizeSlider"),
-    sizeValue = document.getElementById("sizeValue"), 
-    rendering = false;
+let sizeButtons = document.getElementById("sizeButtons"),
+    sizeValue = document.getElementById("sizeValue"),
+    renderingDiv = document.getElementById("rendering");
 
-size.addEventListener("input", function () {
-    if(!rendering){
-        let value = size.value;
-        sizeValue.textContent = `${value} x ${value} px`;
-        size.disabled = false;
+renderingDiv.style.color = 'black';
+
+sizeButtons.addEventListener("click", function (event) {
+    if (event.target.tagName === "BUTTON") {
+        let value = parseInt(event.target.dataset.size);
+        sizeValue.textContent = `Current size: ${value} x ${value} px`;
+        sizeButtons.querySelectorAll("button").forEach(button => button.disabled = true);
         createGrid(value);
     }
 });
@@ -29,29 +31,29 @@ size.addEventListener("input", function () {
 //Modified createGrid function to obtain the batch rendering effect
 function createGrid(size) {
     let grid = document.getElementById('grid');
+    renderingDiv.style.color = 'white';
     grid.innerHTML = '';
     document.documentElement.style.setProperty('--gridRes', size);
-    const batchSize = 100; // Adjust the batch size as needed
+    const batchSize = 50; // Adjust the batch size as needed
     let count = 0;
-    rendering = true;
 
     function renderBatch() {
         for (let i = 0; i < batchSize && count < size * size; i++) {
-        let pixel = document.createElement('div');
-        pixel.classList.add('pixel');
-        grid.appendChild(pixel);
-        count++;
+            let pixel = document.createElement('div');
+            pixel.classList.add('pixel');
+            grid.appendChild(pixel);
+            count++;
         };
         if (count < size * size) {
             requestAnimationFrame(renderBatch);
         } else {
             startDraw();
-            size.disabled = false;
-            rendering = false;
+            sizeButtons.querySelectorAll("button").forEach(button => button.disabled = false);
+            renderingDiv.style.color = 'black';
         };
     };
     renderBatch();
-};
+}
 
 
   

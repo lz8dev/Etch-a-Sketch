@@ -38,10 +38,11 @@ body{
 
 button{
     box-sizing: border-box;
-    background-color: rgb(187 205 187);
+    background-color: rgb(55 63 115);
+    color:  white;
     padding: 1vmin;
     margin: 1vmin;
-    font-size: 1.5vmin;
+    font-size: 1.6vmin;
     overflow: hidden;
 }
 
@@ -49,10 +50,16 @@ button{
     width: 40%;
 }
 
+#leftSect{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
 #colors{
     padding: 1vmin;
     flex-wrap: wrap;
-
+    align-self: flex-end;
     border: 3px dashed #dea7bb;
 }
 
@@ -99,14 +106,15 @@ label{
 
 #properties{
     flex-wrap: wrap;
-    padding: 3vmin;
-    align-self: flex-end;
+    padding: 2vmin;
 }
 
 #gridSize{
-    margin: 1vmin;
     width: 100%;
+    padding: 1vmin;
     text-align: center;
+    border-radius: 2vmin;
+    border: .6vmin solid #2ff8ff;
 }
 
 .gridMode{
@@ -146,13 +154,16 @@ button:hover{
     background-color: rgb(230, 230, 230);
 }
 
-
-#sizeSlider {
-    width: 90%;
-    margin: 0 auto;
+#sizeButtons{
     display: flex;
-    align-items: center;
-    border: 2px solid yellow;
+    box-sizing: border-box;
+    width: 100%;
+    border: px solid cyan;
+}
+
+.sizeButton{
+    background-color: #696969;
+    color: white;
 }
 
 input[type="range"] {
