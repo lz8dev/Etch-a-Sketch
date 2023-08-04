@@ -11,26 +11,35 @@
 </head>
 <body>
     <div class="section" id="leftSect">
-
         <div class="division" id="colors">
-                <div class="colorMod" id="penColor"> 
-                    <label for="penPick">Pen <br> Color:</label>
-                    <input type="color" id="penPick" name="penPick">
-                </div>
+            <div class="title" id="colTitle"> - Color Options - </div>
 
-                <div class="colorMod" id="bkColor"> 
-                    <label for="bkPick">Background <br> Color:</label>
-                    <input type="color" id="bkPick" name="bkPick">
-                </div>
+            <div class="colorMod" id="penColor"> 
+                <label for="penPick">Pen <br> Color:</label>
+                <input type="color" id="penPick" name="penPick">
+            </div>
 
-                <button id="classic"> - CLASSIC MODE - </button>
+            <div class="colorMod" id="bkColor"> 
+                <label for="bkPick">Background <br> Color:</label>
+                <input type="color" id="bkPick" name="bkPick">
+            </div>
 
-                <div class="division" id="buttons">
-                    <button class="penMode" id="pen"> - PEN - </button>
-                    <button class="penMode" id="eraser"> - ERASER - </button>
-                    <button class="penMode" id="shade"> - SHADE - </button>
-                    <button class="penMode" id="rainbow"> - RAINBOW - </button>
-                </div>
+            <button id="classic"> - CLASSIC MODE - </button>
+        </div>        
+
+        <div class="division" id="pens">
+            <div class="division" id="buttons">
+                <div class="title" id="penTitle"> - Pen Options - </div>
+                <button class="penMode" id="pen"> - PEN - </button>
+                <button class="penMode" id="eraser"> - ERASER - </button>
+                <button class="penMode" id="shade"> - SHADE - </button>
+                <button class="penMode" id="rainbow"> - RAINBOW - </button>
+
+                <div class="title" id="gridOpTitle"> - Grid Options - </div>
+                <button class="gridMode" id="gridLines"> - GRID LINES - </button>
+                <button class="gridMode" id="random"> - FILL RANDOM - </button> 
+                <button id="clear"> - CLEAR - </button>
+            </div>
         </div>
     </div>
 
@@ -39,7 +48,8 @@
         <div class="division" id="grid"></div>
 
         <div class="division" id="properties">
-            <div id="gridSize"> - GRID SIZE - 
+            <div id="gridSize">
+                <div class="title" id="gridTitle"> - Grid Size - </div> 
                 <div id="sizeButtons">
                     <button class="sizeButton" data-size="10">10</button>
                     <button class="sizeButton" data-size="20">20</button>
@@ -55,11 +65,6 @@
                 <div id="rendering"> - Rendering... - </div>
                 <span id="sizeValue">Current size: -- </span>
             </div>
-            
-              
-            <button class="gridMode" id="gridLines"> - GRID LINES - </button>
-            <button class="gridMode" id="random"> - FILL RANDOM - </button> 
-            <button id="clear"> - CLEAR - </button>
             
         </div>
     </div>    
