@@ -28,17 +28,18 @@ let sizeButtons = document.getElementById("sizeButtons"),
     clear = document.getElementById('clear'),
     eraseButton = false,
     shadeButton = false,
-    rainButton = false;
+    rainButton = false,
+    vGrid = false;
 
 renderingDiv.style.color = 'black';
 
 sizeButtons.addEventListener("click", function (event) {
-if (event.target.tagName === "BUTTON") {
-    let value = parseInt(event.target.dataset.size);
-    sizeValue.textContent = `Current size: ${value} x ${value} px`;
-    sizeButtons.querySelectorAll("button").forEach(button => button.disabled = true);
-    createGrid(value);
-}
+    if (event.target.tagName === "BUTTON") {
+        let value = parseInt(event.target.dataset.size);
+        sizeValue.textContent = `Current size: ${value} x ${value} px`;
+        sizeButtons.querySelectorAll("button").forEach(button => button.disabled = true);
+        createGrid(value);
+    }
 });
 
 clear.addEventListener("click", function (event) {
@@ -62,6 +63,26 @@ shade.addEventListener("click", function (event) {
 rainbow.addEventListener("click", function (event) {
     clearButtons();
     rainButton = true;
+});
+
+classic.addEventListener("click", function (event) {
+    penPick.value = '#8F8F8F';
+    bkPick.value = '#F0F0F0';
+    clearGrid();
+    clearButtons();    
+});
+
+gridLines.addEventListener("click", function (event) {
+    if (vGrid) {
+        vGrid = false;
+    } else {
+        vGrid = true;
+    };
+    viewGrid(vGrid);
+});
+
+random.addEventListener("click" , function() {
+    randomFill();
 });
 
 function clearButtons(){
@@ -100,15 +121,8 @@ function rainbowColor(pixel){
         g = Math.floor(Math.random() * 256);
         b = Math.floor(Math.random() * 256);
         pixel.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-        }
+    }
 }
-
-classic.addEventListener("click", function (event) {
-    penPick.value = '#8F8F8F';
-    bkPick.value = '#F0F0F0';
-    clearGrid();
-    clearButtons();    
-});
 
 //Modified createGrid function to obtain the batch rendering effect
 function createGrid(size) {
@@ -133,7 +147,6 @@ function createGrid(size) {
             startDraw();
             sizeButtons.querySelectorAll("button").forEach(button => button.disabled = false);
             renderingDiv.style.color = 'black';
-            
         };
         clearGrid();
     };
@@ -145,6 +158,37 @@ function clearGrid(){
     for (let pixel of pixels){
         pixel.style.backgroundColor = bkPick.value;
     };
+}
+
+function randomFill(){
+    let pixels = document.getElementsByClassName('pixel');
+    for (let pixel of pixels){
+        let currentColor = pixel.style.backgroundColor,
+                    rgbValue = currentColor.substring(4, currentColor.length - 1).split(', ');
+
+        if (rgbValue.length === 3) {
+            let r = parseInt(rgbValue[0]),
+                g = parseInt(rgbValue[1]),
+                b = parseInt(rgbValue[2]);
+            r = Math.floor(Math.random() * 256);
+            g = Math.floor(Math.random() * 256);
+            b = Math.floor(Math.random() * 256);
+            pixel.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        }
+    };
+}
+
+function viewGrid(vGrid){
+    let pixels = document.getElementsByClassName('pixel');
+    if (vGrid){
+        for (let pixel of pixels){
+            pixel.style.borderWidth = '0px';
+        }
+    } else {
+        for (let pixel of pixels){
+            pixel.style.borderWidth = '.1px';
+        }
+    }
 }
 
 function startDraw(){
@@ -195,8 +239,3 @@ function startDraw(){
         });
     }
 }
-
-
-
-
-
