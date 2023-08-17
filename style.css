@@ -25,7 +25,9 @@ body{
 
 #mainTitle{
     display: flex;
+    align-items: center;
     margin-right: 1rem;
+    width: 90%;
     border-radius: 2vmin;
     border: 1vmin solid #2ff8ff
 }
@@ -36,10 +38,10 @@ body{
     align-items: center;
     text-align: center;
     width: 60%;
-    height: 100%;
-    padding: 0;
+    height: 90%;
+    padding: 0vmin;
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 4vmin;
     
     border: 0px solid red;
 }
