@@ -20,9 +20,47 @@ body{
     padding: 2vmin;
     font-family: 'Chakra Petch', sans-serif;
     
-    border: 4px solid red;
+    border: px solid red;
 }
 
+#mainTitle{
+    display: flex;
+    margin-right: 1rem;
+    border-radius: 2vmin;
+    border: 1vmin solid #2ff8ff
+}
+
+#mainText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 2.5rem;
+    
+    border: 0px solid red;
+}
+
+img{
+    max-height: 90%;
+    max-width: 90%;
+    object-fit: contain;
+} 
+
+#mainImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40%; 
+    padding: 1re;
+    margin: 0; 
+    
+    border: px solid #38ff00;
+}
 
 .division,
 .section{
@@ -163,10 +201,11 @@ label{
     grid-template-rows: repeat(var(--gridRes), 1fr);
     height: var(--grid-size);
     padding: 1vmin;
+    margin: 0;
     align-items: stretch;
     justify-items: stretch;
     background-color: rgb(97 97 97);
-    border: px solid rgb(30 30 30);
+    border: vmin solid #2ff8ff
 }
 
 #grid:hover {
